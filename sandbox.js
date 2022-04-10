@@ -1,133 +1,137 @@
-// for loop 
-let u = 'shaun';
-console.log(u == 'shaun');
-console.log(u== 'Shaun');
-console.log(u > 'crystal');
- 
- 
-const names = ['shaun','mario','luigi'];
-for(let i=0;i<names.length;i++){
-    //console.log(names[i]);
-    let html = <div>${names[i]}</div>;
-    console.log(html);
+//function declaration
+function greet() {
+    console.log('helo there')
 }
- 
- 
-//while loop
- 
-const names=['shaun','mario','luigi'];
- 
-let i=0;
-while(i<5){
-   console.log('in loop',i);
-      i++;
-}
-let i=0;
-while(i<names.length){
-    console.log(names[i]);
-    i++;
-}
- 
-//do while loop
- 
-let i=4;
-do{
-    console.log('value of i is ',i);
-    i++;
-}while(i<5);
- 
-//if statement
- 
-const age=25;
-if(age>20){
-    console.log('you are over 20 yerars of age');
-}
-const ninjas=['laugi','imran'.'diba','sahadat'];
-if (ninjas.length>3){
-    console.log('that\'s a lot of ninjas');
-}
-const password='password12345';
-if(password.length>=12){
-    console.log('that password is mighty strong');
-}else if(password.length>=8){
-    console.log('that password is long enough');
-}else{
-    console.log('password is not long enough')
-}
- 
- 
- 
-//logical operators -OR || AND &&
-const password='p@ssword12345';
-if(password.length>=12 && password.includes('@')){
-    console.log('that password is mighty strong');
-}else if(password.length>=8 || password.includes('@') && password.length>=5){
-    console.log('that password is strong enough');
-}else{
-    console.log('password is not strong enough')
-}
- 
- 
-//logical NOT(!)
-let user = false;
-if(!user){
-    console.log('you must be logged in to continue');
-}
-console.log(!true);
-console.log(!false);
- 
- 
-//break and continue
-const scores = [50,25,0,30,100,20,10];
-for(let i=0;i<scores.length;i++){
- 
-    if(scores[i]===0){
-        continue;
+
+greet();
+
+// function expressions
+const speak = function() {
+    console.log('good day!')
+};
+speak();
+
+//arguments and parameters
+
+const speak = function(name) {
+    console.log('good day ${name}')
+};
+speak('mario')
+
+// passing different parameter/arguments
+const speak = function(name, time) {
+    console.log('good ${time} ${name}')
+};
+speak('mario', 'morning');
+
+// give this parameters some different values
+const speak = function(name = 'luigi', time = 'night') {
+    console.log('good ${time} ${name}')
+};
+speak();
+
+//returning values
+const calcArea = function(radius) {
+    return 3.14 * radius ** 2;
+};
+const area = calcArea(5);
+console.log(area);
+
+//regular function
+const calcArea = function(radius) {
+    return 3.14 * radius ** 2;
+};
+
+//arrow function
+const calcarea = radius => 3.14 * radius ** 2;
+//two parameters we have to use parenthesis
+
+const area = calcArea(5);
+console.log('area is :', area);
+
+//practise arrow function
+const greet = function() {
+    return 'hello,world';
+};
+const greet = () => 'hello,world';
+const result = greet();
+console.log(result);
+
+// practise arrow function 
+const bill = function(products, taxs) {
+    let total = 0;
+    for (let i = 0; i < products.length; i++) {
+        total += products[i] + products[i] * taxs;
     }
- 
-    console.log('your score: ',scores[i]);
-    if(scores[i]===100){
-        console.log('congrates!you got the top score.');
-        break;
+    return total;
+}
+const bill = (products, taxs) => {
+    let total = 0;
+    for (let i = 0; i < products.length; i++) {
+        total += products[i] + products[i] * taxs;
     }
-}
- 
- 
-//switch statements
- 
-const grade='D';
-switch(grade){
-    case 'A':
-        console.log('You got an A!');
-        break;
-    case 'B':
-        console.log('You got a B!');
-                break;
-    case 'C':
-        console.log('You got a C!');
-        break;
-    case 'D':
-        console.log('You got a D!');
-        break;
-    case 'E':
-        console.log('You got an E!');
-        break;
-    default:
-        console.log('Not a valid grade.');
-}
- 
- 
- 
-//variable &block scope
-let age=30;
-let name='Sam';
-if(true){
-    age=40;
-    let name='Shaun';
-    console.log('inside 1st code block: ',age,name);
-    if(true){
-        let age=50;
-        console.log('inside the 2nd block: ',age);
-    }
-}
-console.log('outside 1st code block: ',age,name);
+    return total;
+};
+
+console.log(bill([10, 15, 30], 0.2));
+
+//method and function 
+const name = 'shaun'
+
+//function 
+const greet = () => 'hello';
+let resultOne = greet();
+console.log(resultOne);
+
+
+
+// method
+let resultTwo = name.toUpperCase();
+console.log(resultTwo);
+
+// callbacks & foreach
+const myFunc = (callbackFunc) => {
+    //do something
+    let value = 50;
+    callbackFunc(value);
+};
+myFunc(value => {
+    //do something
+    console.log(value);
+});
+// foreach
+let people = ['mario', 'luigi', 'ryu', 'shaun', 'chun-li'];
+
+people.forEach(person => {
+    console.log(person)
+});
+//using index in second argument in arrow function
+
+let people = ['mario', 'luigi', 'ryu', 'shaun', 'chun-li'];
+
+people.forEach(person, index) => {
+console.log(index, person)
+});
+// callbacks and foreach together 
+let people = ['mario', 'luigi', 'ryu', 'shaun', 'chun-li'];
+
+const logPerson = (person, index) => {
+
+    console.log('${index} - hello $ {person}');
+};
+people.forEach(logPerson);
+
+
+// get a reference to the 'ul'
+const ul = document.querySelector('.people');
+
+const people = ['mario', 'luigi', 'ryu', 'shaun', 'chun-li'];
+
+let html = ' ';
+people.forEach(person => {
+    // create html template
+    html += '<li style="color: purple">${person}</li>';
+});
+
+console.log(html);
+ul.innerHTML = html
